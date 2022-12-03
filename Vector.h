@@ -10,6 +10,7 @@ using namespace std;
 class Vector{
 private:
     vector<double> vec;
+
 public:
     Vector();
     Vector(vector<double> vec);
@@ -26,11 +27,13 @@ public:
     Vector& operator*=(const double x);
     Vector& operator/=(const double x);
     Vector& operator-=(const Vector v);
+    Vector& operator+=(const Vector v);
     Vector& operator=(const Vector v);
 
     friend ostream& operator<<(ostream& os, const Vector& v){
         for(size_t i = 0; i < v.size(); ++i)
-            os << v.at(i) << " ";
+            os << v.at(i) << endl;
         return os;
     }
+
 };

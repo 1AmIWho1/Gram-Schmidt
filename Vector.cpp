@@ -84,6 +84,14 @@ Vector& Vector::operator-=(const Vector v){
     return *this;
 }
 
+Vector& Vector::operator+=(const Vector v){
+    if(v.size() != vec.size())
+        throw("Can't add Vectors with different sizes!");
+    for(size_t i = 0; i < size(); ++i)
+        vec[i] += v.at(i);
+    return *this;
+}
+
 Vector Vector::operator/(const double x){
     if(isinf(1.0 / x))
         return *this;
