@@ -53,13 +53,23 @@ void Matrix::OldGramSchmidt(){
     vectors = Q;
 }
 
-Vector Matrix::Solve(Vector b, Matrix J){
+Vector Matrix::Solve(Vector b){
+    vectors.push_back(b);
+    for(size_t i = 0; i < vectors.size() - 1; ++i){
+        vectors.at(i).push_back(0);
+    }
+    vectors.at(vectors.size() - 1).push_back(1);
+    //Output();
+    T();
+    //Output();
+    ModGramSchmidt();
+    //Output();
     Vector x;
-    for(size_t i = 0; i < vectors.size(); ++i)
-        x.push_back(0);
-    for(size_t i = 0; i < vectors.size(); ++i)
-        x += J.vectors.at(i) * (b * vectors.at(i));
-    return x;
+    size_t n = vectors.size() - 1;
+    for(size_t i = 0; i < n; ++i){
+        x.push_back(vectors.at(n).at(i) / vectors.at(n).at(n));
+    }
+    return x * (-1);
 }
 
 void Matrix::T(){
@@ -101,27 +111,6 @@ Matrix Matrix::operator*(const Matrix b){
             tmp.push_back(element);
         }
         res.vectors.push_back(tmp);
-    }
-    return res;
-}
-
-void Matrix::Append(Matrix b){
-    for(Vector vec : b.vectors)
-        vectors.push_back(vec);
-}
-
-Matrix Matrix::I(){
-    Matrix res;
-    if(vectors.size() != vectors.at(0).size())
-        return res;
-    for(size_t i = 0; i < vectors.size(); ++i){
-        Vector v;
-        for(size_t j = 0; j < vectors.size(); ++j)
-            if(j == i)
-                v.push_back(1);
-            else
-                v.push_back(0);
-        res.vectors.push_back(v);
     }
     return res;
 }

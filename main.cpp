@@ -21,7 +21,7 @@ vector<double> split_to_double(string s, char c){ // input should be transposed
 }
 
 
-Matrix input_Matrix(string file_name){
+Matrix input_Matrix(string file_name){ // input should be transposed
     ifstream file(file_name);
     string line;
     Matrix m;
@@ -33,11 +33,22 @@ Matrix input_Matrix(string file_name){
     return m;
 }
 
+Vector input_Vector(string file_name){
+    ifstream file(file_name);
+    string line;
+    getline(file, line);
+    Vector v = Vector(split_to_double(line, ' '));
+    file.close();
+    return v;
+}
+
 
 int main(){
-    Matrix m = input_Matrix("input.txt");
-    m.Output();
-    m.OldGramSchmidt();
-    m.Output();
+    Matrix A = input_Matrix("A.txt");
+    A.Output();
+    Vector b = input_Vector("b.txt");
+    b.output();
+    Vector x = A.Solve(b);
+    x.output();
     return 0;
 }

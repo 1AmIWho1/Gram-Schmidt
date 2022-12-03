@@ -19,6 +19,7 @@ public:
     const double at(size_t id) const;
     void push_back(double x);
     double norm() const;
+    void output() const;
     Vector operator+(const Vector v);
     Vector operator-(const Vector v);
     double operator*(const Vector v);
@@ -30,10 +31,10 @@ public:
     Vector& operator+=(const Vector v);
     Vector& operator=(const Vector v);
 
-    friend ostream& operator<<(ostream& os, const Vector& v){
+    /*friend ostream& operator<<(ostream& os, const Vector& v){
         for(size_t i = 0; i < v.size(); ++i)
             os << v.at(i) << endl;
         return os;
-    }
+    }*/
 
 };

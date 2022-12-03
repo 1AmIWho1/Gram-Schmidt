@@ -30,6 +30,11 @@ double Vector::norm() const{
     return sqrt(res);
 }
 
+void Vector::output() const{
+    for(double n : vec)
+        cout << n << endl;
+}
+
 Vector Vector::operator+(const Vector v){
     if(v.size() != vec.size())
         throw("Can't add Vectors with different sizes!");

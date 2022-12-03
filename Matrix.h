@@ -20,10 +20,8 @@ public:
     void GramSchmidt();
     void ModGramSchmidt();
     void OldGramSchmidt();
-    Matrix I();
-    Vector Solve(Vector b, Matrix J);
+    Vector Solve(Vector b);
     void AddVector(vector<double> vec);
-    void Append(Matrix b);
     void Output();
     Matrix operator*(const Matrix b);
 
