@@ -14,7 +14,6 @@ Vector Projection(Vector a, Vector b){
     return b * (dot_product_ab / dot_product_bb);
 }
 
-
 void Matrix::GramSchmidt(){
     vector<Vector> b;
     vector<Vector> e;
@@ -30,7 +29,16 @@ void Matrix::GramSchmidt(){
     vectors = e;
 }
 
-void Matrix::Transpose(){
+void Matrix::T(){
+    vector<Vector> new_vectors;
+    for(size_t i = 0; i < vectors.at(0).size(); ++i){
+        Vector vec;
+        for(size_t j = 0; j < vectors.size(); ++j){
+            vec.push_back(vectors.at(j).at(i));
+        }
+        new_vectors.push_back(vec);
+    }
+    vectors = new_vectors;
 }
 
 void Matrix::AddVector(vector<double> vec){
@@ -39,8 +47,27 @@ void Matrix::AddVector(vector<double> vec){
 
 void Matrix::Output(){
     cout << "Matrix:" << endl;
-    for(Vector vec : vectors)
-        cout << vec << endl;
+    for(size_t i = 0; i < vectors.at(0).size(); ++i){
+        Vector vec;
+        for(size_t j = 0; j < vectors.size(); ++j){
+            cout << vectors.at(j).at(i) << " ";
+        }
+        cout << endl;
+    }
 }
 
-
+Matrix Matrix::operator*(const Matrix b){
+    Matrix res;
+    for(size_t i = 0; i < b.vectors.size(); ++i){
+        Vector tmp;
+        for(size_t j = 0; j < vectors.at(0).size(); ++j){
+            double element = 0;
+            for(size_t k = 0; k < vectors.size(); ++k){
+                element += vectors.at(k).at(j) * b.vectors.at(i).at(k);
+            }
+            tmp.push_back(element);
+        }
+        res.vectors.push_back(tmp);
+    }
+    return res;
+}

@@ -16,8 +16,9 @@ private:
 public:
     Matrix();
     ~Matrix();
-    void Transpose();
+    void T();
     void GramSchmidt();
     void AddVector(vector<double> vec);
     void Output();
+    Matrix operator*(const Matrix b);
 };
