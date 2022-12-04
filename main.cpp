@@ -45,10 +45,12 @@ Vector input_Vector(string file_name){ // input should be transposed
 
 int main(){
     Matrix A = input_Matrix("A.txt");
+    cout << "A:" << endl;
     A.Output();
     Vector b = input_Vector("b.txt");
+    cout << "b:" << endl;
     b.output();
-    Vector x = A.Solve(b);
+    Vector x = A.SolveMod(b);
     cout << endl;
     x.output();
     return 0;

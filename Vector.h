@@ -30,11 +30,5 @@ public:
     Vector& operator-=(const Vector v);
     Vector& operator+=(const Vector v);
     Vector& operator=(const Vector v);
-
-    /*friend ostream& operator<<(ostream& os, const Vector& v){
-        for(size_t i = 0; i < v.size(); ++i)
-            os << v.at(i) << endl;
-        return os;
-    }*/
-
+    
 };

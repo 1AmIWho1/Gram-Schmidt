@@ -21,6 +21,7 @@ public:
     void ModGramSchmidt();
     void OldGramSchmidt();
     Vector Solve(Vector b);
+    Vector SolveMod(Vector b);
     void AddVector(vector<double> vec);
     void Output();
     Matrix operator*(const Matrix b);

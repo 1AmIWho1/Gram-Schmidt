@@ -30,11 +30,9 @@ void Matrix::ModGramSchmidt(){
     vectors = Q;
 }
 
-Vector Projection(Vector a, Vector b){
+Vector projection(Vector a, Vector b){
     double dot_product_ab = a * b;
     double dot_product_bb = b * b;
-    if(isinf(dot_product_ab / dot_product_bb))
-        throw("Division by zero in Projetcion!");
     return b * (dot_product_ab / dot_product_bb);
 }
 
@@ -44,7 +42,7 @@ void Matrix::OldGramSchmidt(){
     for(size_t i = 0; i < vectors.size(); ++i){
         Vector q = vectors.at(i);
         for(size_t j = 0; j < i; ++j)
-            q -= Projection(vectors.at(i), b.at(j));
+            q -= projection(vectors.at(i), b.at(j));
         b.push_back(q);
         Q.push_back(q / q.norm());
     }
@@ -54,6 +52,25 @@ void Matrix::OldGramSchmidt(){
 }
 
 Vector Matrix::Solve(Vector b){
+    vectors.push_back(b);
+    for(size_t i = 0; i < vectors.size() - 1; ++i){
+        vectors.at(i).push_back(0);
+    }
+    vectors.at(vectors.size() - 1).push_back(1);
+    //Output();
+    T();
+    //Output();
+    GramSchmidt();
+    //Output();
+    Vector x;
+    size_t n = vectors.size() - 1;
+    for(size_t i = 0; i < n; ++i){
+        x.push_back(vectors.at(n).at(i) / vectors.at(n).at(n));
+    }
+    return x * (-1);
+}
+
+Vector Matrix::SolveMod(Vector b){
     vectors.push_back(b);
     for(size_t i = 0; i < vectors.size() - 1; ++i){
         vectors.at(i).push_back(0);
@@ -89,7 +106,6 @@ void Matrix::AddVector(vector<double> vec){
 }
 
 void Matrix::Output(){
-    cout << "Matrix:" << endl;
     for(size_t i = 0; i < vectors.at(0).size(); ++i){
         Vector vec;
         for(size_t j = 0; j < vectors.size(); ++j){

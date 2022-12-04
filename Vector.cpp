@@ -36,8 +36,6 @@ void Vector::output() const{
 }
 
 Vector Vector::operator+(const Vector v){
-    if(v.size() != vec.size())
-        throw("Can't add Vectors with different sizes!");
     Vector res;
     for(size_t i = 0; i < size(); ++i)
         res.push_back(v.at(i) + at(i));
@@ -45,8 +43,6 @@ Vector Vector::operator+(const Vector v){
 }
 
 Vector Vector::operator-(const Vector v){
-    if(v.size() != vec.size())
-        throw("Can't subtract Vectors with different sizes!");
     Vector res;
     for(size_t i = 0; i < size(); ++i)
         res.push_back(at(i) + v.at(i));
@@ -61,8 +57,6 @@ Vector Vector::operator*(const double x){
 }
 
 double Vector::operator*(const Vector v){
-    if(v.size() != size())
-        throw("Can't scalar product Vectors with different sizes!");
     double res = 0;
     for(size_t i = 0; i < size(); ++i)
         res += at(i) * v.at(i);
@@ -82,16 +76,12 @@ Vector& Vector::operator/=(const double x){
 }
 
 Vector& Vector::operator-=(const Vector v){
-    if(v.size() != vec.size())
-        throw("Can't subtract Vectors with different sizes!");
     for(size_t i = 0; i < size(); ++i)
         vec[i] -= v.at(i);
     return *this;
 }
 
 Vector& Vector::operator+=(const Vector v){
-    if(v.size() != vec.size())
-        throw("Can't add Vectors with different sizes!");
     for(size_t i = 0; i < size(); ++i)
         vec[i] += v.at(i);
     return *this;
