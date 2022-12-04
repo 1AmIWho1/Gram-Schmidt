@@ -22,7 +22,7 @@ public:
     void output() const;
     Vector operator+(const Vector v);
     Vector operator-(const Vector v);
-    double operator*(const Vector v);
+    double operator*(const Vector v); // scalar
     Vector operator*(const double x);
     Vector operator/(const double x);
     Vector& operator*=(const double x);

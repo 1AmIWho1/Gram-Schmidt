@@ -10,7 +10,7 @@
 using namespace std;
 
 
-vector<double> split_to_double(string s, char c){ // input should be transposed
+vector<double> split_to_double(string s, char c){
     stringstream ss(s);
     string tmp;
     vector<double> res;
@@ -33,7 +33,7 @@ Matrix input_Matrix(string file_name){ // input should be transposed
     return m;
 }
 
-Vector input_Vector(string file_name){
+Vector input_Vector(string file_name){ // input should be transposed
     ifstream file(file_name);
     string line;
     getline(file, line);
@@ -49,6 +49,7 @@ int main(){
     Vector b = input_Vector("b.txt");
     b.output();
     Vector x = A.Solve(b);
+    cout << endl;
     x.output();
     return 0;
 }
