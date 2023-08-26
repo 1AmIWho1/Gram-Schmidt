@@ -22,8 +22,8 @@ void Matrix::ModGramSchmidt(){
     for(size_t i = 0; i < vectors.size(); ++i){
         Vector qk = vectors.at(i);
         for(size_t j = 0; j < i; ++j){
-            double alfa = qk * Q.at(j);
-            qk -= Q.at(j) * alfa;
+            double alpha = qk * Q.at(j);
+            qk -= Q.at(j) * alpha;
         }
         Q.push_back(qk / qk.norm());
     }
