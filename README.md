@@ -29,29 +29,23 @@ $$q_i = \frac{q_i}{||q_i||}$$
 
 $$Ax = b$$
 $$Ax-b=0$$
-$$
-a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,n}x_n - b_1 = 0 \\
-a_{2,1}x_1 + a_{2,2}x_2 + ... + a_{2,n}x_n - b_2 = 0 \\
-... \\
-a_{n,1}x_1 + a_{n,2}x_2 + ... + a_{3,n}x_n - b_n = 0
-$$
+$$a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,n}x_n - b_1 = 0$$
+$$a_{2,1}x_1 + a_{2,2}x_2 + ... + a_{2,n}x_n - b_2 = 0$$
+$$...$$
+$$a_{n,1}x_1 + a_{n,2}x_2 + ... + a_{3,n}x_n - b_n = 0$$
 
 
 Definujeme vektor $z = (x_1, ..., x_n, 1)^T$ a vektory $g_i = (a_{i,1}, a_{i,2}, ..., a_{i,n}, -b_i),\ i = 1,...,n$ a zapíšeme předchozí systém jinak:
-$$
-(g_1,z) = 0 \\
-(g_2,z) = 0 \\
-... \\
-(g_n,z) = 0
-$$
+$$(g_1,z) = 0$$
+$$(g_2,z) = 0$$
+$$...$$
+$$(g_n,z) = 0$$
 
 Pro výpočet vektora, kolmého k vektoram $g_i, i = 1, ..., n$ k vektoram $g$ přidáme nenulový vektor $g_{n+1}$ a provedeme ortogonalizacni proces. Po němu dostaneme ortogonální vektory $q_i, i = 1, ..., n+1$, přičemž pro $q_{n+1}$ platí:
-$$
-(g_1,q_{n+1}) = 0 \\
-(g_2,q_{n+1}) = 0 \\
-... \\
-(g_n,q_{n+1}) = 0
-$$
+$$(g_1,q_{n+1}) = 0$$
+$$(g_2,q_{n+1}) = 0$$
+$$...$$
+$$(g_n,q_{n+1}) = 0$$
 
 Navíc potřebujeme $1$ jako poslední element vektora $q_{n+1}$ a proto vydělíme jeho posledním členem:
 $$z = \frac{q_{n+1}}{q_{n+1,n+1}}$$
