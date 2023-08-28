@@ -25,5 +25,5 @@ public:
     void AddVector(vector<double> vec);
     void Output();
     Matrix operator*(const Matrix b);
-
+    Vector operator*(const Vector b);
 };

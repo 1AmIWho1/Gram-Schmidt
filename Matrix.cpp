@@ -52,7 +52,7 @@ void Matrix::OldGramSchmidt(){
 }
 
 Vector Matrix::Solve(Vector b){
-    vectors.push_back(b);
+    vectors.push_back(b * (-1));
     for(size_t i = 0; i < vectors.size() - 1; ++i){
         vectors.at(i).push_back(0);
     }
@@ -67,11 +67,11 @@ Vector Matrix::Solve(Vector b){
     for(size_t i = 0; i < n; ++i){
         x.push_back(vectors.at(n).at(i) / vectors.at(n).at(n));
     }
-    return x * (-1);
+    return x;
 }
 
 Vector Matrix::SolveMod(Vector b){
-    vectors.push_back(b);
+    vectors.push_back(b * (-1));
     for(size_t i = 0; i < vectors.size() - 1; ++i){
         vectors.at(i).push_back(0);
     }
@@ -86,7 +86,7 @@ Vector Matrix::SolveMod(Vector b){
     for(size_t i = 0; i < n; ++i){
         x.push_back(vectors.at(n).at(i) / vectors.at(n).at(n));
     }
-    return x * (-1);
+    return x;
 }
 
 void Matrix::T(){
@@ -129,4 +129,16 @@ Matrix Matrix::operator*(const Matrix b){
         res.vectors.push_back(tmp);
     }
     return res;
+}
+
+Vector Matrix::operator*(const Vector b){
+    Vector x;
+    for(size_t i = 0; i < vectors[0].size(); ++i){
+        double tmp = 0;
+        for(size_t j = 0; j < b.size(); ++j){
+            tmp += vectors.at(j).at(i) * b.at(j);
+        }
+        x.push_back(tmp);
+    }
+    return x;
 }
