@@ -28,7 +28,7 @@ $$q_i = \frac{q_i}{||q_i||}$$
 ## Použití ortogonalizace Grama-Schmidta pro řešení soustav lineárních rovnic
 
 $$Ax = b$$
-$$Ax-b=0$$
+$$Ax - b = 0$$
 $$a_{1,1}x_1 + a_{1,2}x_2 + ... + a_{1,n}x_n - b_1 = 0$$
 $$a_{2,1}x_1 + a_{2,2}x_2 + ... + a_{2,n}x_n - b_2 = 0$$
 $$...$$
